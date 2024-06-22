@@ -7,7 +7,7 @@ export const Post = () => {
 
   const post = () => {
     if (issueId == "") {
-      Math.floor(Math.random() * 99999)
+      setIssueId(Math.floor(Math.random() * 99999))
     }
 
     let issue = {
