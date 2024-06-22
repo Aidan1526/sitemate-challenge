@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
 
-export const Post = () => {
+export const Update = () => {
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [issueId, setIssueId] = useState("")
 
-  const post = () => {
-    if (issueId == "") {
-      Math.floor(Math.random() * 99999)
-    }
+  const update = () => {
 
     let issue = {
       "issue_id": issueId,
@@ -16,15 +13,15 @@ export const Post = () => {
       "description": description
     }
 
-    Meteor.call('post', issue)
+    Meteor.call('update', issue)
     
   };
 
   return (
     <div className='flex flex-col'>
-      <h1 className='text-2xl'>Post</h1>
+      <h1 className='text-2xl'>Update</h1>
       <div className='mb-3'>
-        <a className='p-3 m-3'>Manual Issue Id</a>
+        <a className='p-3 m-3'>Issue Id</a>
         <input value={issueId}
         onChange={(e) => setIssueId(e.target.value)} className='border border-black'></input>
       </div>
@@ -39,7 +36,7 @@ export const Post = () => {
         onChange={(e) => setDescription(e.target.value)} className='border border-black'></input>
       </div>
       <div>
-        <button className='border border-black rounded-xl p-3' onClick={post}>Post</button>
+        <button className='border border-black rounded-xl p-3' onClick={update}>Update</button>
       </div>
     </div>
   );

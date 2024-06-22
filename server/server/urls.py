@@ -22,4 +22,5 @@ from app.views import IssueApiView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api', IssueApiView.as_view()),
+    path('api/<issue_id>/', IssueApiView.as_view()),
 ]

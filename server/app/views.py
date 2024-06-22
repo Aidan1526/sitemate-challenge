@@ -8,7 +8,7 @@ from .serializers import IssueSerializer
 class IssueApiView(APIView):
 
     def get(self, request, *args, **kwargs):
-        issues = Issue.objects.filter(issue_id = request.data.get('issue_id'))
+        issues = Issue.objects.filter(issue_id = kwargs.get('issue_id'))
         serializer = IssueSerializer(issues, many=True)
 
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -54,7 +54,7 @@ class IssueApiView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, *args, **kwargs):
-        issue_instance = Issue.objects.get(issue_id=request.data.get('issue_id'))
+        issue_instance = Issue.objects.get(issue_id = kwargs.get('issue_id'))
         if not issue_instance:
             return Response(
                 {"res": "Object with issue id does not exists"}, 
